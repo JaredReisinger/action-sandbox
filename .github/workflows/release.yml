@@ -23,7 +23,9 @@ jobs:
 
       - name: pretend publish
         run: |
-          echo "just pretending..."
-          echo "event: ${{ toJson(github.event) }}"
-          echo "event_path: ${{ toJson(github.event_path) }}"
-          echo "event_name: ${{ toJson(github.event_name) }}"
+          echo just pretending...
+          cat <<EOF
+          ${{ toJson(github.event) }}
+          EOF
+          echo event_path: ${{ toJson(github.event_path) }}
+          echo event_name: ${{ toJson(github.event_name) }}
