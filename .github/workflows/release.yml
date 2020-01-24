@@ -22,4 +22,8 @@ jobs:
       - run: npm run test --if-present
 
       - name: pretend publish
-        run: echo "just pretending..."
+        run: |
+          echo "just pretending..."
+          echo "event: ${{ toJson(github.event) }}"
+          echo "event_path: ${{ toJson(github.event_path) }}"
+          echo "event_name: ${{ toJson(github.event_name) }}"
