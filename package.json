@@ -1,6 +1,6 @@
 {
   "name": "action-sandbox",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A place to play with GitHub Actions and Workflows",
   "main": "index.js",
   "scripts": {
