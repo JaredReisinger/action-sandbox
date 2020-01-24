@@ -39,5 +39,5 @@ jobs:
           npm version ${{github.event.release.tag_name}}
           git status
           #git graph -4
-          git log 4
+          git log -4
           git push
