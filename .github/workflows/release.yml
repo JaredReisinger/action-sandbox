@@ -34,7 +34,8 @@ jobs:
 
       - name: pretend publish ${{github.event.release.name}} (${{github.event.release.tag_name}})
         run: |
-          git config user.email ${{github.actor}}
+          git config user.email release-bot@noreply.foopy.com
+          git config user.name Release Bot
           npm version ${{github.event.release.tag_name}}
           git status
           git graph -4
