@@ -21,11 +21,18 @@ jobs:
 
       - run: npm run test --if-present
 
-      - name: pretend publish
+      - name: event diagnotics
         run: |
-          echo just pretending...
+          echo event_name: ${{ toJson(github.event_name) }}
+          echo event_path: ${{ toJson(github.event_path) }}
+          echo === event begin ===
           cat <<EOF
           ${{ toJson(github.event) }}
           EOF
-          echo event_path: ${{ toJson(github.event_path) }}
-          echo event_name: ${{ toJson(github.event_name) }}
+          echo === event end ===
+
+      - name: pretend publish ${{github.event.release.name}} (${{github.event.release.tag_name}})
+        run: |
+          npm version ${{github.event.release.tag_name}}
+          git status
+          git graph -4
