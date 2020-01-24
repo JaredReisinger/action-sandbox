@@ -32,7 +32,7 @@ jobs:
           EOF
           echo === event end ===
 
-      - name: pretend publish: ${{github.event.release.name}} (${{github.event.release.tag_name}})
+      - name: pretend publish - ${{github.event.release.name}} (${{github.event.release.tag_name}})
         run: |
           git config user.email release-bot@noreply.foopy.com
           git config user.name Release Bot
