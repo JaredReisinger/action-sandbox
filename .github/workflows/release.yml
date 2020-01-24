@@ -25,6 +25,7 @@ jobs:
         run: |
           echo event_name: ${{ toJson(github.event_name) }}
           echo event_path: ${{ toJson(github.event_path) }}
+          echo actor: ${{ toJson(github.actor) }}
           echo === event begin ===
           cat <<EOF
           ${{ toJson(github.event) }}
@@ -33,6 +34,7 @@ jobs:
 
       - name: pretend publish ${{github.event.release.name}} (${{github.event.release.tag_name}})
         run: |
+          git config user.email ${{github.actor}}
           npm version ${{github.event.release.tag_name}}
           git status
           git graph -4
