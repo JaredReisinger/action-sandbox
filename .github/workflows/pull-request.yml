@@ -1,4 +1,4 @@
-name: Release
+name: Pull Request
 
 on: [pull_request]
 
@@ -21,14 +21,22 @@ jobs:
 
       - name: event diagnotics
         run: |
-          echo event_name: ${{ toJson(github.event_name) }}
-          echo event_path: ${{ toJson(github.event_path) }}
+          echo event name: ${{ toJson(github.event_name) }}
+          echo event type: ${{ toJson(github.event.action) }}
           echo actor: ${{ toJson(github.actor) }}
           echo === event begin ===
           cat <<EOF
           ${{ toJson(github.event) }}
           EOF
           echo === event end ===
+
+      - name: PR message...
+        run: |
+          cat <<EOF
+          TITLE: ${{ toJson(github.event.pull_request.title) }}
+          BODY:  ${{ toJson(github.event.pull_request.body) }}
+          EOF
+
 
       # - name: pretend publish - ${{github.event.release.name}} (${{github.event.release.tag_name}})
       #   run: |
