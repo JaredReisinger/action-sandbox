@@ -49,7 +49,9 @@ jobs:
               pull_number: context.pull_request.number
               per_page: 250,
             });
-            console.dir(result.data);
+            //console.dir(result.data);
+            const commits = result.data.map(c => c.commit);
+            console.dir(commits);
 
       # - name: pretend publish - ${{github.event.release.name}} (${{github.event.release.tag_name}})
       #   run: |
