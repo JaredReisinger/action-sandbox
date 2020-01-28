@@ -4,9 +4,13 @@
   "description": "A place to play with GitHub Actions and Workflows",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Tests to come...\""
+    "test": "echo \"Tests to come...\"",
+    "try": "node ./index.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "semantic-release": "^17.0.1"
+  }
 }
