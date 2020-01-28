@@ -46,7 +46,7 @@ jobs:
             const result = await github.pulls.listCommits({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: context.pull_request.number,
+              pull_number: context.payload.pull_request.number,
               per_page: 250,
             });
             console.dir(result);
