@@ -37,6 +37,18 @@ jobs:
           BODY:  ${{ toJson(github.event.pull_request.body) }}
           EOF
 
+      - name: try to get commits
+        uses: actions/github-script@0.4.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const result = await github.pulls.listCommits({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.pull_request.number,
+              per_page: 250,
+            });
+            console.dir(result);
 
       # - name: pretend publish - ${{github.event.release.name}} (${{github.event.release.tag_name}})
       #   run: |
