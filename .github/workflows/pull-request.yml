@@ -1,0 +1,41 @@
+name: Release
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # - uses: actions/checkout@v2
+      #
+      # - uses: actions/setup-node@v1
+      #   with:
+      #     node-version: 12
+      #
+      # - run: npm ci
+      #
+      # - run: npm run build --if-present
+      #
+      # - run: npm run test --if-present
+
+      - name: event diagnotics
+        run: |
+          echo event_name: ${{ toJson(github.event_name) }}
+          echo event_path: ${{ toJson(github.event_path) }}
+          echo actor: ${{ toJson(github.actor) }}
+          echo === event begin ===
+          cat <<EOF
+          ${{ toJson(github.event) }}
+          EOF
+          echo === event end ===
+
+      # - name: pretend publish - ${{github.event.release.name}} (${{github.event.release.tag_name}})
+      #   run: |
+      #     git config user.email release-bot@noreply.foopy.com
+      #     git config user.name Release Bot
+      #     npm version ${{github.event.release.tag_name}}
+      #     git status
+      #     #git graph -4
+      #     git log -4
+      #     git push
