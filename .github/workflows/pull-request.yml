@@ -29,6 +29,9 @@ jobs:
           ${{ toJson(github.event) }}
           EOF
           echo === event end ===
+          echo === env begin ===
+          env | sort
+          echo === env end ===
 
       - name: PR message...
         run: |
